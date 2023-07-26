@@ -1,12 +1,12 @@
 exports.get = async function(event) {
     console.log("request:", JSON.stringify(event, undefined, 2));
     
-    if (event.pathParameters && event.pathParameters['character']) {
-        console.log("Received name: " + event.pathParameters.character);
+    if (event.pathParameters && event.pathParameters['keyblade']) {
+        console.log("Received name: " + event.pathParameters.keyblade);
         return {
             statusCode: 200,
             headers: { "Content-Type": "text/plain" },
-            body: `You've asked for this character ${event.pathParameters.character}!\n`
+            body: `You've asked for this keyblade ${event.pathParameters.keyblade}!\n`
         };
     }
     return {
@@ -26,13 +26,13 @@ exports.post = async function(event) {
         return {
             statusCode: 200,
             headers: { "Content-Type": "text/plain" },
-            body: `New characted added: \n${body.name}`
+            body: `New keyblade added: \n${body.name}`
         };
     }
 
     return {
         statusCode: 401,
         headers: { "Content-Type": "text/plain" },
-        body: `Error! No character were provided on the body\n`
+        body: `Error! No keyblade were provided on the body\n`
     };
 };
